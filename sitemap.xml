@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/api/judge/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/api/retrievers/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/governance/CODE_OF_CONDUCT/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/governance/CONTRIBUTING/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/governance/PROJECT_CHARTER/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/guides/installation/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+    <url>
+         <loc>https://kairosedubf.github.io/wobsongo-verify/guides/quickstart/</loc>
+         <lastmod>1980-01-01</lastmod>
+    </url>
+</urlset>
