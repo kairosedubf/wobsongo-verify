@@ -512,10 +512,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-up-environment" class="md-nav__link">
+  <a href="#2-set-up-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set Up Environment
+        2. Set Up Environment
       
     </span>
   </a>
@@ -523,10 +523,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-run-tests" class="md-nav__link">
+  <a href="#3-quality-assurance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Run Tests
+        3. Quality Assurance
       
     </span>
   </a>
@@ -749,10 +749,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-up-environment" class="md-nav__link">
+  <a href="#2-set-up-environment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set Up Environment
+        2. Set Up Environment
       
     </span>
   </a>
@@ -760,10 +760,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-run-tests" class="md-nav__link">
+  <a href="#3-quality-assurance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Run Tests
+        3. Quality Assurance
       
     </span>
   </a>
@@ -796,13 +796,33 @@
 <pre><code class="language-bash">git clone [https://github.com/kairosedubf/wobsongo-verify.git](https://github.com/kairosedubf/wobsongo-verify.git)
 cd wobsongo-verify
 </code></pre>
-<h2 id="set-up-environment">Set Up Environment</h2>
+<h2 id="2-set-up-environment">2. Set Up Environment</h2>
 <p>We use <code>uv</code> for dependency management. Install the dependencies with:</p>
 <pre><code class="language-bash">uv install
 </code></pre>
-<h2 id="3-run-tests">3. Run Tests</h2>
-<p>Ensure everything is working correctly before you start:</p>
-<pre><code class="language-bash">pytest tests/
+<h2 id="3-quality-assurance">3. Quality Assurance</h2>
+<p>All PRs must include tests and maintain <strong>at least 80% line coverage</strong>.</p>
+<pre><code class="language-bash"># Run the full suite
+pytest tests/
+
+# Run with coverage report
+pytest --cov=wobsongo_verify --cov-report=term-missing tests/
+</code></pre>
+<p><strong>Test conventions:</strong></p>
+<ul>
+<li>File names: <code>test_&lt;module&gt;.py</code> — one file per source module</li>
+<li>Fixtures: define shared fixtures in <code>tests/conftest.py</code></li>
+<li>Test data: use <code>tests/data/</code> only — never real datasets</li>
+</ul>
+<p><strong>Unit vs. integration tests:</strong> Mark tests that call live external services with <code>@pytest.mark.integration</code> so they can be skipped in fast local runs:</p>
+<pre><code class="language-python">@pytest.mark.integration
+def test_retriever_queries_qdrant():
+    ...
+</code></pre>
+<pre><code class="language-bash">pytest tests/ -m &quot;not integration&quot;   # unit tests only (default in CI)
+</code></pre>
+<p><strong>Linting:</strong> Run before opening a PR — CI will reject on failures:</p>
+<pre><code class="language-bash">ruff check . &amp;&amp; ruff format .
 </code></pre>
 <h1 id="data-privacy-safety-policy">Data Privacy &amp; Safety Policy</h1>
 <p><strong>CRITICAL</strong>: Do not commit any real user data, private health records, or proprietary knowledge base dumps to this repository.</p>
@@ -812,11 +832,15 @@ cd wobsongo-verify
 </ul>
 <h1 id="pull-request-process">Pull Request Process</h1>
 <ul>
-<li>Create a new branch for your feature: git checkout -b feature/my-new-feature</li>
-<li>Commit your changes using clear messages: git commit -m "Add Qdrant support to Retriever"</li>
-<li>Push to your branch: git push origin feature/my-new-feature</li>
+<li>Clone/fork the repo. We recommend forking to your own GitHub account and cloning locally.</li>
+<li>Take on an issue or start a new feature. If you want to work on an existing issue, comment on it to let others know you're working on it.</li>
+<li>Create a new branch for your feature: <code>git checkout -b feature/my-new-feature</code></li>
+<li>Commit your changes using clear messages: <code>git commit -m "feat(vector): add Qdrant support to Retriever"</code></li>
+<li>Push to your branch: <code>git push origin feature/my-new-feature</code></li>
 <li>Open a Pull Request against the main branch.</li>
 <li>Wait for a maintainer to review. We aim to review all PRs within 72 hours.</li>
+<li>Make sure that all checks pass (tests, linting, coverage) in GitHub Actions.</li>
+<li>Once you get an approval, one of the project maintainers will merge your PR.</li>
 </ul>
 <h1 id="reporting-bugs">Reporting Bugs</h1>
 <p>If you find a bug, please open an issue on GitHub. Include:</p>
