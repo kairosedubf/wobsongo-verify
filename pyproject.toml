@@ -5,7 +5,7 @@ description = "Generic RAG-based claim verification engine"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "litestar>=2.0",
+    "litestar>=2.22.0",
 ]
 
 [project.optional-dependencies]
